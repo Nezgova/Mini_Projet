@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "sdl.h": "c",
+        "sdl_test_font.h": "c",
+        "begin_code.h": "c",
+        "windows.ai.machinelearning.h": "c",
+        "sdl_image.h": "c"
+    }
+}
