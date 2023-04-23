@@ -1,6 +1,5 @@
 #include <strings/GENERAL.h>
 
-
 char* general(int a, char* gen) {
     int i;
     char bit[][20] = {
@@ -11,11 +10,12 @@ char* general(int a, char* gen) {
         "Mohamed", "Winner", "Success", "Legendary"
     };
    
-    for (i = 0; i <1 ; i++) {
-        strcpy(gen, bit[a]); // copy string from bit[i] to gen
+    char* start = gen;
+    for (i = 0; i < 1; i++) {
+        strcpy(gen, bit[a]); // copy string from bit[a] to gen
         gen += strlen(bit[a]); // advance gen pointer to end of copied string
     }
-    *gen = '\0'; // add null terminator to the end of the string
+    *gen = '\0'; // add null terminator to end of string
     
-    return gen;
+    return start;
 }
