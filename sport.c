@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include<string.h>
+#include <strings/SPORT.h>
 
 char* sport(int a, char* gen) {
     int i;

@@ -6,6 +6,8 @@
         "windows.ai.machinelearning.h": "c",
         "sdl_image.h": "c",
         "test.C": "cpp",
-        "sport": "c"
+        "sport": "c",
+        "general.h": "c",
+        "sport.h": "c"
     }
 }
