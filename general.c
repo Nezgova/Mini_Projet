@@ -12,10 +12,10 @@ char* general(int a, char* gen) {
    
     char* start = gen;
     for (i = 0; i < 1; i++) {
-        strcpy(gen, bit[a]); // copy string from bit[a] to gen
-        gen += strlen(bit[a]); // advance gen pointer to end of copied string
+        strcpy(gen, bit[a]); 
+        gen += strlen(bit[a]); 
     }
-    *gen = '\0'; // add null terminator to end of string
+    *gen = '\0'; 
     
     return start;
 }
