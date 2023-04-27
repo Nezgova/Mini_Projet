@@ -8,5 +8,9 @@
         "sport": "c",
         "general.h": "c",
         "sport.h": "c",
+        "string.h": "c",
+        "stdlib.h": "c",
+        "math.h": "c",
+        "time.h": "c"
     }
 }

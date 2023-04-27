@@ -3,8 +3,8 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
-#include <strings/GENERAL.h>
-#include <strings/SPORT.h>
+#include "strings/GENERAL.h"
+#include "strings/SPORT.h"
 
 
 int main() {

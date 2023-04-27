@@ -1,4 +1,4 @@
-#include <strings/GENERAL.h>
+#include "strings/GENERAL.h"
 
 char* general(int a, char* gen) {
     int i;
