@@ -12,6 +12,7 @@
         "draw.h": "c",
         "stdio.h": "c",
         "textcoverter.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "conio.h": "c"
     }
 }

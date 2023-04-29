@@ -2,7 +2,6 @@
 #include <string.h>
 #include "import/textcoverter.h"
 
-
 int character_counter(char *chara){
     int count = 0;
     for (int i = 0; chara[i] != '\0'; i++)
@@ -51,7 +50,7 @@ int check_guess(char guess, char* secret, char* find, int* nmcg) {
     }
 
     if (!found) {
-        printf("Sorry, that letter is not in the word.\n");
+        printf("Sorry, the letter %c is not in the word.\n", guess);
         return 0;
     }
 
