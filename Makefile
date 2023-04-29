@@ -3,7 +3,7 @@ CFLAGS=-I.
 
 all: hang
 
-hang: hang.c STRING.c DRAW.c
+hang: hang.c STRING.c DRAW.c TEXTCONVERTER.c
 	$(CC) $(CFLAGS) $^ -o $@
 
 clean:
