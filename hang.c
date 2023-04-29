@@ -3,6 +3,10 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include "import/textcoverter.h"
+#include "import/draw.h"
+#include "import/strings.h"
+
 
 
 
