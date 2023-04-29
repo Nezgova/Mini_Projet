@@ -5,12 +5,12 @@
         "begin_code.h": "c",
         "windows.ai.machinelearning.h": "c",
         "sdl_image.h": "c",
-        "sport": "c",
-        "general.h": "c",
-        "sport.h": "c",
-        "string.h": "c",
+        "strings.h": "c",
         "stdlib.h": "c",
         "math.h": "c",
-        "time.h": "c"
+        "time.h": "c",
+        "draw.h": "c",
+        "stdio.h": "c",
+        "textcoverter.h": "c"
     }
 }
