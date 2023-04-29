@@ -4,3 +4,6 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <time.h>
+
+
+char* word_function(int a);
