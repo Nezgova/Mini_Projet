@@ -1,10 +1,10 @@
 CC=gcc
 CFLAGS=-I.
 
-all: myprogram
+all: hang
 
-myprogram: hang.c sport.c general.c
+hang: hang.c STRING.c DRAW.c
 	$(CC) $(CFLAGS) $^ -o $@
 
 clean:
-	rm -f myprogram
+	rm -f hang
