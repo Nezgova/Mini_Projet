@@ -1,0 +1,51 @@
+Film
+Actor
+Actress
+Director
+Screenplay
+Cinematography
+Plot
+Genre
+Script
+Dialogue
+Character
+Casting
+Editing
+Sequel
+Prequel
+Trilogy
+Blockbuster
+Cult
+Oscar
+Golden Globe
+Premiere
+Cinema
+Theater
+Box office
+Stunt
+Special effects
+Soundtrack
+Score
+Camerawork
+Costume
+Makeup
+Set design
+Storyboard
+Animation
+Documentary
+Horror
+Comedy
+Drama
+Action
+Romance
+Sci-fi
+Thriller
+Fantasy
+Adventure
+Musical
+Suspense
+Western
+Independent
+Superhero
+Remake
+Classic
