@@ -47,5 +47,4 @@ Suspense
 Western
 Independent
 Superhero
-Remake
 Classic
