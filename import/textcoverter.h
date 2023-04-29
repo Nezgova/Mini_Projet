@@ -6,4 +6,5 @@
 #include <time.h>
 
 
-int character_converter(char * arg1);
+int character_counter(char * arg1);
+void num_to_word(char *guessed_word, char *secret_word);
