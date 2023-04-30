@@ -7,7 +7,7 @@
 #define MAX_NUM 1000
 
 char* word_function(int a) {
-    int randomNum;
+    int randomNum,i;
     char* word = malloc(20 * sizeof(char));
     srand(time(NULL));
     randomNum = rand() % 50 + 1;
@@ -39,7 +39,11 @@ char* word_function(int a) {
            if(strlen(file_char)>0 && file_char[strlen(file_char)-1]=='\n'){
             file_char[strlen(file_char)-1]='\0';
            }
-            strcpy(word, file_char);
+
+                for(i=0;i<strlen(file_char);i++){
+                    word[i]= toupper(file_char[i]);
+                }
+              word[i]='\0';
             break;
         }
         currentLine++;
