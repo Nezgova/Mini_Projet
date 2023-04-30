@@ -17,19 +17,19 @@ Trilogy
 Blockbuster
 Cult
 Oscar
-Golden Globe
+GoldenGlobe
 Premiere
 Cinema
 Theater
-Box office
+Boxoffice
 Stunt
-Special effects
+Specialeffects
 Soundtrack
 Score
 Camerawork
 Costume
 Makeup
-Set design
+Setdesign
 Storyboard
 Animation
 Documentary

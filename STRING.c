@@ -17,7 +17,7 @@ char* word_function(int a) {
     
     switch (a) {
         case 1:
-            file = fopen("textfiles/genral.txt", "r");
+            file = fopen("textfiles/general.txt", "r");
             break;
         case 2:
             file = fopen("textfiles/sport.txt", "r");
