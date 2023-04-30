@@ -13,10 +13,12 @@
 int main() {
 
         char secret_word[100];
+        int a;
 
     printf("Enter a word for someone to guess: ");
-    scanf("%s", secret_word);
-
+    scanf("%d", &a);
+    
+    strcpy(secret_word, word_function(a));
     play_hangman(secret_word, EASY);
    
     
