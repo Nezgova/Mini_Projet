@@ -35,6 +35,10 @@ char* word_function(int a) {
     int currentLine = 1;
     while (fgets(file_char, MAX_NUM, file) != NULL) {
         if (currentLine == randomNum) {
+           
+           if(strlen(file_char)>0 && file_char[strlen(file_char)-1]=='\n'){
+            file_char[strlen(file_char)-1]='\0';
+           }
             strcpy(word, file_char);
             break;
         }
