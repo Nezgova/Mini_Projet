@@ -5,6 +5,7 @@
 #include <conio.h>
 #include <time.h>
 #include <stdbool.h>
+#include <ctype.h>
 
 typedef enum {
     EASY,

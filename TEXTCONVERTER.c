@@ -99,7 +99,7 @@ bool play_hangman(char *secret, Difficulty diff)
     char find[secret_length + 1];
     char guessedl[27] = {0};
     char guess;
-
+    
     num_to_word(find, secret);
 
     while (ng > 0 )
@@ -108,7 +108,7 @@ bool play_hangman(char *secret, Difficulty diff)
 
         printf("Guess a letter: ");
         scanf(" %c", &guess);
-
+        guess = toupper(guess);
         if (check_already_guessed(guess, find, guessedl))
         {
             continue;
