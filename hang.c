@@ -20,7 +20,7 @@ int main() {
     strcpy(secret_word, word_function(a));
     for (int i = 0; i < strlen(secret_word); i++)
     {
-        printf("%c\n", secret_word[i]);
+        printf("%c.\t", secret_word[i]);
     }
     play_hangman(secret_word,EASY);
     
