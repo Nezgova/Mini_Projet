@@ -4,8 +4,3 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <time.h>
-typedef enum {
-   easy,
-   simple,
-   difficult
-} difficulty;

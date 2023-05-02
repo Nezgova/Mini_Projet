@@ -1,14 +1,14 @@
 #include "import/draw.h"
+#include "import/textcoverter.h"
 
 
 
 
-
-void displayHangman(int numTries,difficulty diff ) {
+void displayHangman(int numTries,Difficulty diff ) {
     
     switch (diff)
     {
-    case (easy) :
+    case (EASY) :
     printf("   ________\n");
     printf("   |/     |\n");
     printf("   |      %c \n", (numTries >= 1) ? 'O' : ' ');
@@ -24,7 +24,7 @@ void displayHangman(int numTries,difficulty diff ) {
         break;
     
 
-    case (simple) :
+    case (MEDIUM) :
     printf("   ________\n");
     printf("   |/     |\n");
     printf("   |      %c \n", (numTries >= 1) ? 'O' : ' ');
@@ -39,7 +39,7 @@ void displayHangman(int numTries,difficulty diff ) {
     
         break;
     
-    case (difficult) :
+    case (HARD) :
     printf("   ________\n");
     printf("   |/     |\n");
     printf("   |      %c \n", (numTries >= 1) ? 'O' : ' ');
