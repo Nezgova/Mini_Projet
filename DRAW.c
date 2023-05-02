@@ -55,3 +55,4 @@ void displayHangman(int numTries,Difficulty diff ) {
         break;
     
 }
+}
