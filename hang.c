@@ -15,7 +15,7 @@ int main() {
         char secret_word[100];
         int a;
 
-    printf("Enter a word for someone to guess: ");
+    printf("Enter a number of theme \n1 for general\n2 for sports\n3 for movies\n4 for music: ");
     scanf("%d", &a);
     strcpy(secret_word, word_function(a));
     for (int i = 0; i < strlen(secret_word); i++)
