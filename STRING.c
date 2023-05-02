@@ -7,7 +7,7 @@
 #define MAX_NUM 1000
 
 char* word_function(int a) {
-    int randomNum;
+    int randomNum,i;
     char* word = malloc(20 * sizeof(char));
     srand(time(NULL));
     randomNum = rand() % 50 + 1;
@@ -17,7 +17,7 @@ char* word_function(int a) {
     
     switch (a) {
         case 1:
-            file = fopen("textfiles/genral.txt", "r");
+            file = fopen("textfiles/general.txt", "r");
             break;
         case 2:
             file = fopen("textfiles/sport.txt", "r");
@@ -35,7 +35,15 @@ char* word_function(int a) {
     int currentLine = 1;
     while (fgets(file_char, MAX_NUM, file) != NULL) {
         if (currentLine == randomNum) {
-            strcpy(word, file_char);
+           
+           if(strlen(file_char)>0 && file_char[strlen(file_char)-1]=='\n'){
+            file_char[strlen(file_char)-1]='\0';
+           }
+
+                for(i=0;i<strlen(file_char);i++){
+                    word[i]= toupper(file_char[i]);
+                }
+              word[i]='\0';
             break;
         }
         currentLine++;

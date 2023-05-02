@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include "import/textcoverter.h"
 
 int character_counter(char *chara)
@@ -21,14 +22,14 @@ void num_to_word(char *find, char *secret)
     find[strlen(secret)] = '\0';
 }
 
-int check_already_guessed(char guess, char *find, int length, char *guessedl)
+bool check_already_guessed(char guess, char *find, char *guessedl)
 {
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < strlen(find); i++)
     {
         if (guess == find[i])
         {
             printf("You already guessed that letter.\n");
-            return 1;
+            return true;
         }
     }
     for (int i = 0; i < strlen(guessedl); i++)
@@ -36,35 +37,35 @@ int check_already_guessed(char guess, char *find, int length, char *guessedl)
         if (guess == guessedl[i])
         {
             printf("You already guessed the letter %c. Try another letter.\n", guess);
-            return 1;
+            return true;
         }
     }
     guessedl[strlen(guessedl)] = guess;
     guessedl[strlen(guessedl) + 1] = '\0';
-    return 0;
+    return false;
 }
 
-int check_guess(char guess, char *secret, char *find, int *nmcg)
+bool check_guess(char guess, char *secret, char *find, int *nmcg)
 {
-    int found = 0;
+    bool found = false;
     for (int i = 0; i < strlen(secret); i++)
     {
         if (guess == secret[i])
         {
             find[i] = guess;
             (*nmcg)++;
-            found = 1;
+            found = true;
         }
     }
 
     if (!found)
     {
         printf("Sorry, the letter %c is not in the word.\n", guess);
-        return 0;
+        return false;
     }
 
     printf("Good guess!\n");
-    return 1;
+    return true;
 }
 
 void print_game_status(char *find, int ng)
@@ -73,7 +74,7 @@ void print_game_status(char *find, int ng)
     printf("%d guesses remaining.\n", ng);
 }
 
-int play_hangman(char *secret, Difficulty diff)
+bool play_hangman(char *secret, Difficulty diff)
 {
     int ng = 9;
     switch (diff)
@@ -88,6 +89,7 @@ int play_hangman(char *secret, Difficulty diff)
         ng = 3;
         break;
     default:
+        diff = EASY;
         ng = 9;
         break;
     }
@@ -97,18 +99,17 @@ int play_hangman(char *secret, Difficulty diff)
     char find[secret_length + 1];
     char guessedl[27] = {0};
     char guess;
-    int game_over = 0;
-
+    
     num_to_word(find, secret);
 
-    while (ng > 0 && !game_over)
+    while (ng > 0 )
     {
         print_game_status(find, ng);
 
         printf("Guess a letter: ");
         scanf(" %c", &guess);
-
-        if (check_already_guessed(guess, find, secret_length, guessedl))
+        guess = toupper(guess);
+        if (check_already_guessed(guess, find, guessedl))
         {
             continue;
         }
@@ -122,14 +123,14 @@ int play_hangman(char *secret, Difficulty diff)
         {
             printf("\n%s\n", find);
             printf("Congratulations, you guessed the word!\n");
-            return 1;
+            return true;
         }
         else if (ng == 0)
         {
             printf("Sorry, you ran out of guesses. The word was %s.\n", secret);
-            return 0;
+            return false;
         }
     }
 
-    return 0;
+    return false;
 }
