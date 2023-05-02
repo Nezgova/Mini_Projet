@@ -1,6 +1,6 @@
 #include "import/draw.h"
 
-enum (easy,simple,difficulte) difficulty;
+
 
 
 
