@@ -17,6 +17,7 @@
         "random": "c",
         "compare": "c",
         "limits": "c",
-        "new": "c"
+        "new": "c",
+        "score.h": "c"
     }
 }
