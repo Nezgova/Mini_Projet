@@ -1,8 +1,30 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <windows.h>
 #include "import/textcoverter.h"
+#include "import/draw.h"
+#include "import/score.h"
 
+double score = 0;
+
+void center_text(const char *text)
+{
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+
+    int console_width = csbi.dwSize.X;
+    int text_length = strlen(text);
+
+    int padding = (console_width - text_length) / 2;
+
+    for (int i = 0; i < padding; i++)
+    {
+        putchar(' ');
+    }
+
+    printf("%s", text);
+}
 int character_counter(char *chara)
 {
     int count = 0;
@@ -45,8 +67,9 @@ bool check_already_guessed(char guess, char *find, char *guessedl)
     return false;
 }
 
-bool check_guess(char guess, char *secret, char *find, int *nmcg)
+bool check_guess(char guess, char *secret, char *find, int *nmcg, Difficulty diff)
 {
+    
     bool found = false;
     for (int i = 0; i < strlen(secret); i++)
     {
@@ -61,10 +84,14 @@ bool check_guess(char guess, char *secret, char *find, int *nmcg)
     if (!found)
     {
         printf("Sorry, the letter %c is not in the word.\n", guess);
+        score = *scale_score(false, diff, &score);
+        printf("your score is %.3lf\n", score);
         return false;
     }
 
     printf("Good guess!\n");
+    score = *scale_score(true, diff, &score);
+    printf("your score is %.3lf\n", score);
     return true;
 }
 
@@ -76,6 +103,7 @@ void print_game_status(char *find, int ng)
 
 bool play_hangman(char *secret, Difficulty diff)
 {
+    int co = 0;
     int ng = 9;
     switch (diff)
     {
@@ -96,41 +124,66 @@ bool play_hangman(char *secret, Difficulty diff)
 
     int nmcg = 0;
     int secret_length = strlen(secret);
-    char find[secret_length + 1];
+    char *find = malloc(secret_length + 1);
+    if (find == NULL)
+    {
+        printf("Error: Memory allocation failed\n");
+        return false;
+    }
+    memset(find, '_', secret_length);
+    find[secret_length] = '\0';
     char guessedl[27] = {0};
     char guess;
-    
-    num_to_word(find, secret);
 
-    while (ng > 0 )
+    while (ng > 0)
     {
+        HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+        CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
+        WORD savedAttributes;
+        char difficulty_txt[32];
+
+        // Save the current text and background colors
+        GetConsoleScreenBufferInfo(consoleHandle, &consoleInfo);
+        savedAttributes = consoleInfo.wAttributes;
+        sprintf(difficulty_txt, "Difficulty: %s\n", (diff == 0) ? "EASY" : (diff == 1) ? "MEDIUM"
+                                                                                       : "HARD");
+        SetConsoleTextAttribute(consoleHandle, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY | BACKGROUND_RED);
+        center_text(difficulty_txt);
+        SetConsoleTextAttribute(consoleHandle, savedAttributes);
+        displayHangman(co, diff);
         print_game_status(find, ng);
 
         printf("Guess a letter: ");
         scanf(" %c", &guess);
+
         guess = toupper(guess);
+        system("cls");
         if (check_already_guessed(guess, find, guessedl))
         {
             continue;
         }
 
-        if (!check_guess(guess, secret, find, &nmcg))
+        if (!check_guess(guess, secret, find, &nmcg, diff))
         {
             ng--;
+            co++;
         }
 
         if (nmcg == secret_length)
         {
             printf("\n%s\n", find);
             printf("Congratulations, you guessed the word!\n");
+            free(find);
             return true;
         }
         else if (ng == 0)
         {
             printf("Sorry, you ran out of guesses. The word was %s.\n", secret);
+            free(find);
             return false;
         }
     }
 
+    free(find);
     return false;
 }

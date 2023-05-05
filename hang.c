@@ -3,28 +3,60 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include <Windows.h>
 #include "import/textcoverter.h"
 #include "import/draw.h"
 #include "import/strings.h"
+#include "import/score.h"
 
 
 
+int main()
+{
+    start:
+    char secret_word[100];
+    int theme;
+    Difficulty diff;
+    system("cls");
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
+    WORD savedAttributes;
 
-int main() {
+    // Save the current text and background colors
+    GetConsoleScreenBufferInfo(consoleHandle, &consoleInfo);
+    savedAttributes = consoleInfo.wAttributes;
 
-        char secret_word[100];
-        int a;
+    // Set the new text and background colors
+    SetConsoleTextAttribute(consoleHandle, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY | BACKGROUND_RED);
 
-    printf("Enter a number of theme \n1 for general\n2 for sports\n3 for movies\n4 for music: ");
-    scanf("%d", &a);
-    strcpy(secret_word, word_function(a));
-    for (int i = 0; i < strlen(secret_word); i++)
+    center_text("HANGMAN\n");
+
+    getchar();
+    system("cls");
+
+    printf("Enter a number of theme \n1: general\n2: sports\n3: movies\n4: music: ");
+    scanf("%d", &theme);
+    
+    
+    system("cls");
+    printf("Enter the difficulty :\n1: Easy\n2: Medium\n3: Hard :");
+    scanf("%d", &diff);
+    SetConsoleTextAttribute(consoleHandle, savedAttributes);
+    system("cls");
+    diff-= 1;
+    if (theme > 0 && theme < 5 && diff >= 0 && diff < 3)
     {
-        printf("%c.\t", secret_word[i]);
+    strcpy(secret_word, word_function(theme));
+    
+    
+    play_hangman(secret_word, diff);
+    
+    }else{
+        goto start;
     }
-    play_hangman(secret_word,EASY);
     
-   
     
+
+    getchar();
     return 0;
 }
