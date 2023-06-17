@@ -25,24 +25,7 @@ void center_text(const char *text)
 
     printf("%s", text);
 }
-int character_counter(char *chara)
-{
-    int count = 0;
-    for (int i = 0; chara[i] != '\0'; i++)
-    {
-        count++;
-    }
-    return count;
-}
 
-void num_to_word(char *find, char *secret)
-{
-    for (int i = 0; i < strlen(secret); i++)
-    {
-        find[i] = '_';
-    }
-    find[strlen(secret)] = '\0';
-}
 
 bool check_already_guessed(char guess, char *find, char *guessedl)
 {
