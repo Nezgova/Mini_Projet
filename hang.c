@@ -32,15 +32,19 @@ int main()
     center_text("HANGMAN\n");
 
     getchar();
+    do{
+
+    
     system("cls");
 
     printf("Enter a number of theme \n1: general\n2: sports\n3: movies\n4: music: ");
     scanf("%d", &theme);
-    
-    
+    }while(theme > 4 || theme < 1);
+    do{
     system("cls");
     printf("Enter the difficulty :\n1: Easy\n2: Medium\n3: Hard :");
     scanf("%d", &diff);
+    }while(diff > 3 || diff < 1);
     SetConsoleTextAttribute(consoleHandle, savedAttributes);
     system("cls");
     diff-= 1;
@@ -57,6 +61,6 @@ int main()
     
     
 
-    getchar();
+    getch();
     return 0;
 }
